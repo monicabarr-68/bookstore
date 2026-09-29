@@ -1,0 +1,22 @@
+package com.project.bookstore.infraestructure.adapter.in;
+
+import jakarta.validation.constraints.NotBlank;
+
+public class CategoryBookRequestDto {
+    @NotBlank(message = "El campo no puede estar vacío. Ingrese una categoría")
+    private String name;
+
+    public CategoryBookRequestDto(){}
+
+    public CategoryBookRequestDto(String name) {
+        this.name = name;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+}

@@ -91,7 +91,7 @@ public class Book {
     }
 
 
-    //SETTERS
+    //SETTERS: se omite
     public void setSynopsis(String synopsis) {
         this.synopsis = synopsis;
     }
