@@ -1,18 +1,52 @@
 package com.project.bookstore.infraestructure.adapter.in;
 
-import com.project.bookstore.application.port.in.CategoryBookInputPort;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.project.bookstore.application.port.in.CreateCategoryBookPort;
+import com.project.bookstore.application.port.in.DeleteCategoryBookPort;
+import com.project.bookstore.application.port.in.GetCategoryBookPort;
+import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/category")
+@RequestMapping("/categories")
 public class CategoryBookController {
 
-    private final CategoryBookInputPort categoryInputPort;
+    private final GetCategoryBookPort getCategoryPort;
+    private final CreateCategoryBookPort createCategoryPort;
+    private final DeleteCategoryBookPort deleteCategoryPort;
 
-    public CategoryBookController(CategoryBookInputPort categoryInputPort){
-        this.categoryInputPort = categoryInputPort;
+    public CategoryBookController(GetCategoryBookPort getCategoryPort,
+                                  CreateCategoryBookPort createCategoryPort,
+                                  DeleteCategoryBookPort deleteCategoryPort){
+        this.getCategoryPort = getCategoryPort;
+        this.createCategoryPort = createCategoryPort;
+        this.deleteCategoryPort = deleteCategoryPort;
     }
+
+    @GetMapping
+    public List<CategoryBookDto> findAllCategories(){
+        return CategoryBookWebMapper.toListOfCategoryBookDto(getCategoryPort.findAllCategories());
+    }
+
+    @GetMapping("/{id}")
+    public CategoryBookDto findById(@PathVariable Long id){
+        return CategoryBookWebMapper.toCategoryBookDto(getCategoryPort.findById(id));
+    }
+
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public CategoryBookDto create(@Valid @RequestBody CategoryBookDto categoryRequest){
+        return CategoryBookWebMapper.toCategoryBookDto(
+                createCategoryPort.createCategoryBook(categoryRequest.getName()));
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteCategory(@PathVariable Long id){
+        deleteCategoryPort.deleteCategory(id);
+    }
+
 
 
 }

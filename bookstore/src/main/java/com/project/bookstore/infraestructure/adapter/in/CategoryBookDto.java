@@ -2,13 +2,13 @@ package com.project.bookstore.infraestructure.adapter.in;
 
 import jakarta.validation.constraints.NotBlank;
 
-public class CategoryBookRequestDto {
+public class CategoryBookDto {
     @NotBlank(message = "El campo no puede estar vacío. Ingrese una categoría")
     private String name;
 
-    public CategoryBookRequestDto(){}
+    public CategoryBookDto(){}
 
-    public CategoryBookRequestDto(String name) {
+    public CategoryBookDto(String name) {
         this.name = name;
     }
 

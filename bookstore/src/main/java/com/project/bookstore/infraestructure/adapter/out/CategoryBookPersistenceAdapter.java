@@ -6,6 +6,8 @@ import com.project.bookstore.infraestructure.entities.CategoryBookEntity;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
+import java.util.Optional;
+
 @Component
 public class CategoryBookPersistenceAdapter implements CategoryBookRepositoryPort {
 
@@ -17,15 +19,25 @@ public class CategoryBookPersistenceAdapter implements CategoryBookRepositoryPor
 
     @Override
     public CategoryBook save(CategoryBook category) {
-        CategoryBookEntity entitySaved = categoryJpaRepository.save(CategorybookPersistanceMapper.toCategoryBookEntity(category));
-        return CategorybookPersistanceMapper.toCategoryBook(entitySaved);
+        CategoryBookEntity entitySaved = categoryJpaRepository.save(CategoryBookPersistanceMapper.toCategoryBookEntity(category));
+        return CategoryBookPersistanceMapper.toCategoryBook(entitySaved);
     }
 
     @Override
     public List<CategoryBook> findAllCategories() {
         return categoryJpaRepository.findAll()
                                     .stream()
-                                    .map(entity -> CategorybookPersistanceMapper.toCategoryBook(entity))
+                                    .map(entity -> CategoryBookPersistanceMapper.toCategoryBook(entity))
                                     .toList();
+    }
+
+    @Override
+    public Optional<CategoryBook> findById(Long id) {
+        return categoryJpaRepository.findById(id).map(CategoryBookPersistanceMapper::toCategoryBook);
+    }
+
+    @Override
+    public void deleteCategory(Long id) {
+        categoryJpaRepository.deleteById(id);
     }
 }

@@ -4,9 +4,9 @@ import com.project.bookstore.domain.model.CategoryBook;
 
 import java.util.List;
 
-public interface CategoryBookInputPort {
+public interface GetCategoryBookPort {
 
-    CategoryBook createCategoryBook(String name);
     List<CategoryBook> findAllCategories();
+    CategoryBook findById(Long id);
 
 }
