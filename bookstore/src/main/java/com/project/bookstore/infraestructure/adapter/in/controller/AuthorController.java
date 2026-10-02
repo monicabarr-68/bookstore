@@ -37,6 +37,7 @@ public class AuthorController {
     }
 
     @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public AuthorResponseDto findById(@PathVariable Long id){
         return AuthorWebMapper.toAuthorResponseDto(getAuthorPort.findById(id));
     }

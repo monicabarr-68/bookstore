@@ -31,6 +31,7 @@ public class CategoryBookController {
     }
 
     @GetMapping("/{id}")
+    @ResponseStatus(HttpStatus.OK)
     public CategoryBookDto findById(@PathVariable Long id){
         return CategoryBookWebMapper.toCategoryBookDto(getCategoryPort.findById(id));
     }
