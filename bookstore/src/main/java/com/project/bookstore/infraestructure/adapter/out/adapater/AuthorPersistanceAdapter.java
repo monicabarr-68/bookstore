@@ -1,7 +1,9 @@
-package com.project.bookstore.infraestructure.adapter.out;
+package com.project.bookstore.infraestructure.adapter.out.adapater;
 
 import com.project.bookstore.application.port.out.AuthorRepositoryPort;
 import com.project.bookstore.domain.model.Author;
+import com.project.bookstore.infraestructure.adapter.out.repository.AuthorJpaRepository;
+import com.project.bookstore.infraestructure.adapter.out.mappers.AuthorPersistanceMapper;
 import com.project.bookstore.infraestructure.entities.AuthorEntity;
 import org.springframework.stereotype.Component;
 

@@ -1,7 +1,9 @@
-package com.project.bookstore.infraestructure.adapter.out;
+package com.project.bookstore.infraestructure.adapter.out.adapater;
 
 import com.project.bookstore.application.port.out.CategoryBookRepositoryPort;
 import com.project.bookstore.domain.model.CategoryBook;
+import com.project.bookstore.infraestructure.adapter.out.repository.CategoryBookJpaRepository;
+import com.project.bookstore.infraestructure.adapter.out.mappers.CategoryBookPersistanceMapper;
 import com.project.bookstore.infraestructure.entities.CategoryBookEntity;
 import org.springframework.stereotype.Component;
 
