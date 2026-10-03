@@ -28,10 +28,6 @@ public class AuthorService implements CreateAuthorPort, GetAuthorPort, DeleteAut
         return authorRepositoryPort.save(author);
     }
 
-    @Override
-    public void delete(Long id) {
-        authorRepositoryPort.deleteAuthor(id);
-    }
 
     @Override
     public List<Author> findAllAuthors() {
@@ -44,5 +40,11 @@ public class AuthorService implements CreateAuthorPort, GetAuthorPort, DeleteAut
         if (authorOptional.isEmpty()) {
             throw new AuthorNotFoundException("Autor con id " + id + " no encontrado") ;
         } return authorOptional.get();
+    }
+
+    @Override
+    public void delete(Long id) {
+        findById(id);
+        authorRepositoryPort.deleteAuthor(id);
     }
 }

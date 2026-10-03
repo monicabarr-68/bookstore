@@ -1,4 +1,4 @@
-package com.project.bookstore.infraestructure.adapter.in;
+package com.project.bookstore.infraestructure.adapter.in.dtos;
 
 import jakarta.validation.constraints.NotBlank;
 

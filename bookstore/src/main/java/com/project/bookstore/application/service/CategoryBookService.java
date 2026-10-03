@@ -43,6 +43,7 @@ public class CategoryBookService implements CreateCategoryBookPort, GetCategoryB
 
     @Override
     public void deleteCategory(Long id) {
+        findById(id);
         categoryRepositoryPort.deleteCategory(id);
     }
 }

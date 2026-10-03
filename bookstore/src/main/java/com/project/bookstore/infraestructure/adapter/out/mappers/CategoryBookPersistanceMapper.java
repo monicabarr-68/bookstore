@@ -1,4 +1,4 @@
-package com.project.bookstore.infraestructure.adapter.out;
+package com.project.bookstore.infraestructure.adapter.out.mappers;
 
 import com.project.bookstore.domain.model.CategoryBook;
 import com.project.bookstore.infraestructure.entities.CategoryBookEntity;

@@ -1,6 +1,7 @@
-package com.project.bookstore.infraestructure.adapter.in;
+package com.project.bookstore.infraestructure.adapter.in.mappers;
 
 import com.project.bookstore.domain.model.CategoryBook;
+import com.project.bookstore.infraestructure.adapter.in.dtos.CategoryBookDto;
 
 import java.util.List;
 

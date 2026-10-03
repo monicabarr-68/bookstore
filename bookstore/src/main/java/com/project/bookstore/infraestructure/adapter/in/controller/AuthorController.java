@@ -1,8 +1,11 @@
-package com.project.bookstore.infraestructure.adapter.in;
+package com.project.bookstore.infraestructure.adapter.in.controller;
 
 import com.project.bookstore.application.port.in.CreateAuthorPort;
 import com.project.bookstore.application.port.in.DeleteAuthorPort;
 import com.project.bookstore.application.port.in.GetAuthorPort;
+import com.project.bookstore.infraestructure.adapter.in.dtos.AuthorRequestDto;
+import com.project.bookstore.infraestructure.adapter.in.dtos.AuthorResponseDto;
+import com.project.bookstore.infraestructure.adapter.in.mappers.AuthorWebMapper;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

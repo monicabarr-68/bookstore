@@ -1,8 +1,10 @@
-package com.project.bookstore.infraestructure.adapter.in;
+package com.project.bookstore.infraestructure.adapter.in.controller;
 
 import com.project.bookstore.application.port.in.CreateCategoryBookPort;
 import com.project.bookstore.application.port.in.DeleteCategoryBookPort;
 import com.project.bookstore.application.port.in.GetCategoryBookPort;
+import com.project.bookstore.infraestructure.adapter.in.dtos.CategoryBookDto;
+import com.project.bookstore.infraestructure.adapter.in.mappers.CategoryBookWebMapper;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;

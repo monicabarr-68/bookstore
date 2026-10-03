@@ -1,7 +1,9 @@
-package com.project.bookstore.infraestructure.adapter.in;
+package com.project.bookstore.infraestructure.adapter.in.mappers;
 
 import com.project.bookstore.application.port.in.CreateAuthorCommand;
 import com.project.bookstore.domain.model.Author;
+import com.project.bookstore.infraestructure.adapter.in.dtos.AuthorRequestDto;
+import com.project.bookstore.infraestructure.adapter.in.dtos.AuthorResponseDto;
 
 import java.util.List;
 
