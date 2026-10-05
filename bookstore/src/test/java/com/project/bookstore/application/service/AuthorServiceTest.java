@@ -1,5 +1,6 @@
 package com.project.bookstore.application.service;
 
+import com.project.bookstore.application.port.in.CreateAuthorCommand;
 import com.project.bookstore.application.port.out.AuthorRepositoryPort;
 import com.project.bookstore.domain.exception.AuthorNotFoundException;
 import com.project.bookstore.domain.model.Author;
@@ -50,6 +51,25 @@ public class AuthorServiceTest {
 
         verify(repositoryPort).findById(eq(authorId));
         verify(repositoryPort, never()).save(any(Author.class));
+
     }
+
+    @Test
+    void shouldSaveAuthorOnce(){
+        Long authorId = 25L;
+        Author author = new Author(authorId, "Marco Avilés",
+                "Cholo. Serrano. Inmigrante. Nació en la ciudad de Abancay, creció en San Juan de Lurigancilustre barrio de inmigrantes;");
+
+        when(repositoryPort.save(any(Author.class))).thenReturn(author);
+
+        authorService.create(new CreateAuthorCommand("Marco Avilés",
+                "Cholo. Serrano. Inmigrante. Nació en la ciudad de Abancay, creció en San Juan de Lurigancilustre barrio de inmigrantes;"));
+
+        verify(repositoryPort, times(1)).save(any(Author.class));
+
+    }
+
+
+
 
 }
