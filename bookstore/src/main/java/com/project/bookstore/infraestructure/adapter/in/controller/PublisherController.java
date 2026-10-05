@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/publisher")
+@RequestMapping("/api/v1/publishers")
 public class PublisherController {
     private final CreatePublisherPort createPublisherPort;
     private final GetPublisherPort getPublisherPort;
