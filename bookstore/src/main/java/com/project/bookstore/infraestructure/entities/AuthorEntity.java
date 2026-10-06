@@ -13,6 +13,8 @@ public class AuthorEntity {
 
     private String biography;
 
+    public AuthorEntity() {}
+
     public AuthorEntity(String fullName, String biography) {
         this.fullName = fullName;
         this.biography = biography;

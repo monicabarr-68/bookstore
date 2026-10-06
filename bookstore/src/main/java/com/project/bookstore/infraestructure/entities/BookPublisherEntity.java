@@ -11,6 +11,8 @@ public class BookPublisherEntity {
     private String name;
     private String website;
 
+    public BookPublisherEntity() {}
+
     public BookPublisherEntity(Long id, String website, String name) {
         this.id = id;
         this.website = website;
