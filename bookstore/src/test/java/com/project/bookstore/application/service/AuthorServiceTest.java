@@ -10,6 +10,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.util.List;
 import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -69,6 +70,20 @@ public class AuthorServiceTest {
 
     }
 
+    @Test
+    void shouldReturnAllAuthors() {
+
+        Author author1 = new Author(1L, "Marco Avilés", "Biografía ...");
+        Author author2 = new Author(2L, "Julio Ramón Ribeyro", "Biografía ...");
+        List<Author> authorList = List.of(author1, author2);
+
+        when(repositoryPort.findAllAuthors()).thenReturn(authorList);
+
+        List<Author> listTest = authorService.findAllAuthors();
+
+        assertNotNull(listTest);
+        assertEquals(2, listTest.size());
+    }
 
 
 
