@@ -3,7 +3,7 @@ package com.project.bookstore.infraestructure.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "book_categories")
+@Table(name = "category")
 public class CategoryBookEntity {
 
     @Id

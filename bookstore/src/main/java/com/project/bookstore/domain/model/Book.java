@@ -12,16 +12,17 @@ public class Book {
     private String synopsis;
     private Integer numberPages;
     private Integer publicationYear;
+    private BookPublisher publisher;
     private List<Author> authors = new ArrayList<>(); //Se inicializa creando una lista vacía, y luego agregar valores
     private List<CategoryBook> categories = new ArrayList<>();
-    private BookPublisher publisher;
+
 
     //CONSTRUCTORS
     public Book() {}
 
     public Book(Long id, String title, Double price, Integer stock, String isbn,
-                String synopsis, Integer numberPages, Integer publicationYear,
-                List<Author> authors, List<CategoryBook> categories, BookPublisher publisher) {
+                String synopsis, Integer numberPages, Integer publicationYear, BookPublisher publisher,
+                List<Author> authors, List<CategoryBook> categories ) {
         this.id = id;
         this.title = title;
         this.price = price;
@@ -30,9 +31,10 @@ public class Book {
         this.synopsis = synopsis;
         this.numberPages = numberPages;
         this.publicationYear = publicationYear;
+        this.publisher = publisher;
         if (authors != null){this.authors = authors;}
         if (categories != null){this.categories = categories;}
-        this.publisher = publisher;
+
     }
 
     public Book(String title, Double price, Integer stock, String isbn, Integer numberPages, Integer publicationYear) {
@@ -42,6 +44,20 @@ public class Book {
         this.isbn = isbn;
         this.numberPages = numberPages;
         this.publicationYear = publicationYear;
+    }
+
+    //constructor adaptado al command para crear libros fácilmente
+    public Book(String title, Double price, Integer stock, Integer numberPages, Integer publicationYear,BookPublisher publisher, List<Author> authors) {
+        this.title = title;
+        this.price = price;
+        this.stock = stock;
+        this.numberPages = numberPages;
+        this.publicationYear = publicationYear;
+        this.publisher = publisher;
+        if (authors != null) {
+            this.authors = authors;
+        }
+
     }
 
     //GETTERS
@@ -91,7 +107,8 @@ public class Book {
     }
 
 
-    //SETTERS: se omite
+    //SETTERS:
+    public void setIsbn(String isbn){this.isbn =isbn;}
     public void setSynopsis(String synopsis) {
         this.synopsis = synopsis;
     }
@@ -100,6 +117,39 @@ public class Book {
         this.publisher = publisher;
     }
 
+
     //COMPORTAMIENTOS
 
+    public void updatePrice(Double newPrice){
+        if(newPrice != null && newPrice > 0){
+            this.price = newPrice;
+        }
+    }
+
+    public void addStock(Integer quantity){
+        if (quantity > 0){
+            this.stock += quantity;
+        }
+    }
+    public void reduceStock(Integer quantity){
+        if (quantity > 0 && this.stock>=quantity){
+            this.stock -= quantity;
+        }
+    }
+
+    public void addAuthor(Author author){
+        if (author != null){
+            this.authors.add(author);
+        }
+    }
+
+    public void addCategory(CategoryBook category){
+        if (category != null){
+            this.categories.add(category);
+        }
+    }
+
+
 }
+
+
