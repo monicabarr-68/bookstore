@@ -7,10 +7,8 @@ import com.project.bookstore.domain.model.Book;
 import com.project.bookstore.infraestructure.adapter.in.dtos.BookRequestDto;
 import com.project.bookstore.infraestructure.adapter.in.dtos.BookResponseDto;
 import jakarta.validation.Valid;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/books")
@@ -22,6 +20,7 @@ public class BookController {
     }
 
     @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     BookResponseDto create(@Valid @RequestBody BookRequestDto request){
         return toResponse(createBookPort.create(toCommand(request)));
     }

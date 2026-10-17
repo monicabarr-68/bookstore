@@ -31,7 +31,6 @@ public record BookRequestDto(
         Long publisherId,
 
         @NotNull(message = "Debe enviar al menos un ID de autor")
-        @Positive(message = "El número de ID debe ser válido")
-        List<Long> authorsId
+        List<@Positive(message = "Los IDs de los autores deben ser válidos")Long> authorsId
 ) {
 }
