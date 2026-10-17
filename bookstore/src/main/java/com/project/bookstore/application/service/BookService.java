@@ -46,7 +46,7 @@ public class BookService implements CreateBookPort {
                                           .filter(Objects::nonNull)
                                           .toList();
 
-        return new Book(
+        Book book = new Book(
                 bookCommand.title(),
                 bookCommand.price(),
                 bookCommand.stock(),
@@ -54,5 +54,7 @@ public class BookService implements CreateBookPort {
                 bookCommand.publicationYear(),
                 publisher,
                 authors);
+
+        return bookRepositoryPort.save(book);
     }
 }
