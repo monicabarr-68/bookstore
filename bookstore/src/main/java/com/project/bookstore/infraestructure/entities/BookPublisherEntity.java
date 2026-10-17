@@ -13,10 +13,10 @@ public class BookPublisherEntity {
 
     public BookPublisherEntity() {}
 
-    public BookPublisherEntity(Long id, String website, String name) {
+    public BookPublisherEntity(Long id, String name, String website) {
         this.id = id;
-        this.website = website;
         this.name = name;
+        this.website = website;
     }
 
     public BookPublisherEntity(String name, String website) {
